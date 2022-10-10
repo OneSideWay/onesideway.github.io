@@ -85,10 +85,10 @@
         </style>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
     </head>
-    <body>
+    <body style="transition: all 0.3s ease-in-out;">
         <div>
             <div class="row">
-                <h1 r="陈家豪">Julius Chen</h1>
+                <h1 r="陈家豪  ">Julius Chen</h1>
                 <div>
                     <p><i class="fa-solid fa-envelope"></i>&emsp;<a href="mailto:cjhworms@gmail.com">cjhworms@gmail.com</a></p>
                     <p><i class="fa-solid fa-phone"></i>&emsp;+86-15971441579</p>
@@ -153,7 +153,7 @@
             </ul>
         </div>
         <div style="position: fixed; bottom: 20px; right: 20px; text-align: right;">
-            <div style="margin-bottom: 20px;" class="animate__animated animate__fadeOutRight" id="options" hidden>
+            <div style="margin-bottom: 20px; padding: 10px; border-radius: 10px;" class="animate__animated animate__fadeOutRight" id="options" hidden>
                 <div>
                     <label style="margin-right: 5px;" r="暗黑模式">Dark Theme</label>
                     <label class="switch">
@@ -177,6 +177,7 @@
             document.documentElement.style.setProperty('--animate-duration', '0.3s');
             function switchTheme(mode) {
                 $('#load-css').attr('href', $(`#${mode}-css`).attr('href'))
+                $('#options').css('background', mode == 'dark' ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.9)')
             }
             function toggleLang() {
                 $('[r]').each(function(i ,e) {
@@ -201,6 +202,7 @@
             }
             if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 $('#switch-darkmode').attr('checked', true)
+                $('#options').css('background', 'rgba(0, 0, 0, 0.7)')
             }
             if(navigator.language == 'zh-CN') {
                 $('#switch-lang').attr('checked', true)
